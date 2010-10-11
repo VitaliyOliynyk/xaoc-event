@@ -1,17 +1,11 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package eu.vitaliy.xaocevent;
 
 import java.lang.reflect.Method;
 
 
-
 /**
  *
- * @author Witalij
+ * @author Vitaliy Oliynyk
  */
 public class ObserverContext {
     private Method method;

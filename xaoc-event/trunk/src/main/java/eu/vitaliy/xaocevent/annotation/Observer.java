@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package eu.vitaliy.xaocevent.annotation;
 
 import java.lang.annotation.ElementType;
@@ -13,7 +8,7 @@ import java.lang.annotation.Target;
 
 /**
  *
- * @author Witalij
+ * @author Vitaliy Oliynyk
  */
 @Target({ElementType.METHOD, ElementType.TYPE})
 @Retention(RetentionPolicy.RUNTIME)
