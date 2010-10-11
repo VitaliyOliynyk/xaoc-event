@@ -1,38 +1,39 @@
 package eu.vitaliy.xaocevent;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
+
+import javax.annotation.Resource;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 /**
  * Unit test for simple App.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration("classpath:/xaoc-event-context.xml")
 public class AppTest 
-    extends TestCase
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
+    @Resource IBean1 bean1;
+    
+    public AppTest( )
     {
-        super( testName );
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
+    @Test
+    @Ignore
+    public void test()
     {
-        return new TestSuite( AppTest.class );
-    }
+        //given
+        
+        //when
+        bean1.m1();
+        
+        //then
+        Assert.assertTrue(bean1.isM2OK());
 
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
     }
 }
