@@ -18,11 +18,17 @@ public class Bean1 implements IBean1{
     public Bean1() {
     }
 
-    @Override
-    @Observable("event1")
-    public String eventSender(String s) {
+    
+    
+    private String eventSenderImpl(String s) {
         System.out.println(getClass().getName()+".eventSender()");
         return s;
+    }
+
+    @Override
+    @Observable("event1")
+    public String eventSender(String s){
+       return  eventSenderImpl(s);
     }
 
     @Observer("event1")
