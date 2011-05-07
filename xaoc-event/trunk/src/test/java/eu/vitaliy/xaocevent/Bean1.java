@@ -2,8 +2,7 @@ package eu.vitaliy.xaocevent;
 
 import eu.vitaliy.xaocevent.annotation.Observable;
 import eu.vitaliy.xaocevent.annotation.Observer;
-import javax.annotation.PostConstruct;
-import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;import org.springframework.stereotype.Component;
 
 /**
  *
@@ -25,7 +24,6 @@ public class Bean1 implements IBean1{
         return s;
     }
 
-    @Override
     @Observable("event1")
     public String eventSender(String s){
        return  eventSenderImpl(s);

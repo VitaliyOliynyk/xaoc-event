@@ -12,10 +12,10 @@ import eu.vitaliy.xaocevent.annotation.Observer;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-import javax.annotation.Resource;
 import org.aspectj.lang.annotation.After;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
@@ -30,7 +30,7 @@ public class ObserverAspect {
     private Map<MetaDataContext, Boolean> isCheck = new HashMap<MetaDataContext, Boolean>();
 
 
-    @Resource
+    @Autowired
     @Qualifier("eu.vitaliy.xaocevent.EventQueue")
     private IEventQueue eventQueue;
 

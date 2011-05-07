@@ -10,7 +10,7 @@ import java.lang.annotation.Target;
  *
  * @author Vitaliy Oliynyk
  */
-@Target({ElementType.METHOD, ElementType.TYPE})
+@Target({ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 public @interface Observer {
