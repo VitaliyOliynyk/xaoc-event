@@ -11,12 +11,26 @@
         Spring components can interact by simply calling each others methods.
         But to enable components to interact in a more loosely-coupled fashion
         than is possible when the components call each others methods directly,
-        xaoc-event  provides component-driven events
+        xaoc-event provides component-driven events
     </description>
     <licenses>
-        <license></license>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
     </licenses>
-
+    <scm>
+        <url>https://xaoc-event.svn.sourceforge.net/svnroot/xaoc-event/trunk</url>
+        <connection>https://xaoc-event.svn.sourceforge.net/svnroot/xaoc-event/trunk</connection>
+    </scm>
+    <developers>
+        <developer>
+            <id>Lead developer</id>
+            <name>Vitaliy Oliynyk</name>
+            <email>xaoc00@gmail.com</email>
+        </developer>
+    </developers>
 
     <build>
         <plugins>
