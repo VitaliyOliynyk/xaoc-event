@@ -6,7 +6,18 @@
     <packaging>jar</packaging>
     <version>1.0.0</version>
     <name>xaoc-event</name>
-    <url>http://maven.apache.org</url>
+    <url>http://sourceforge.net/projects/xaoc-event</url>
+    <description>
+        Spring components can interact by simply calling each others methods.
+        But to enable components to interact in a more loosely-coupled fashion
+        than is possible when the components call each others methods directly,
+        xaoc-event  provides component-driven events
+    </description>
+    <licenses>
+        <license></license>
+    </licenses>
+
+
     <build>
         <plugins>
             <plugin>
