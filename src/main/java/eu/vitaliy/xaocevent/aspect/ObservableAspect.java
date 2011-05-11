@@ -45,7 +45,10 @@ public class ObservableAspect {
         Method method = clazz.getDeclaredMethod(methodName, methodSignature.getMethod().getParameterTypes());
         Observable observable = method.getAnnotation(Observable.class);
         String eventKey = observable.value();
-
+        if("".equals(eventKey))
+        {
+            eventKey = method.getName();
+        }
         List<ObserverContext> observers = eventQueue.get(eventKey);
         if(observers != null)
         {

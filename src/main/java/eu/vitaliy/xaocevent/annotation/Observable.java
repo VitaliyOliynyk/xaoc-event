@@ -10,9 +10,9 @@ import java.lang.annotation.Target;
  *
  * @author Vitaliy Oliynyk
  */
-@Target({ElementType.METHOD})
+@Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 public @interface Observable {
-    String value();
+    String value() default "";
 }

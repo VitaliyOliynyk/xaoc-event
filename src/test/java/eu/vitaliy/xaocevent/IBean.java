@@ -4,8 +4,8 @@ package eu.vitaliy.xaocevent;
  *
  * @author Vitaliy Oliynyk
  */
-public interface IBean1 {
+public interface IBean {
     String eventSender(String s);
     String getSenderArgument();
-    boolean isTest2OK();
+    boolean isReceiveNamedEventWithoutArgument();
 }
