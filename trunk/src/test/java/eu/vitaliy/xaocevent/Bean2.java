@@ -8,13 +8,13 @@ import org.springframework.stereotype.Component;
  *
  * @author Vitaliy Oliynyk
  */
-@Component("bean1")
-public class Bean1 implements IBean {
+@Component("bean2")
+public class Bean2 implements IBean {
 
     private String senderArgument = null;
     private boolean receiveNamedEventWithoutArgument = false;
 
-    public Bean1() {
+    public Bean2() {
     }
 
     
@@ -24,18 +24,18 @@ public class Bean1 implements IBean {
         return s;
     }
 
-    @Observable("event1")
+    @Observable
     public String eventSender(String s){
        return  eventSenderImpl(s);
     }
 
-    @Observer("event1")
+    @Observer("eventSender")
     private void eventReceiverWithArguments(String s) {
         System.out.println(getClass().getName()+".eventReceiverWithArguments() " + s);
         senderArgument = s;
     }
 
-    @Observer("event1")
+    @Observer("eventSender")
     private void eventReceiverWithoutArguments() {
         System.out.println(getClass().getName()+".eventReceiverWithoutArguments() ");
         receiveNamedEventWithoutArgument = true;
