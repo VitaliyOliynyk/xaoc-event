@@ -29,13 +29,13 @@ public class Bean2 implements IBean {
        return  eventSenderImpl(s);
     }
 
-    @Observer("eventSender")
+    @Observer(Events.EVENT_SENDER)
     private void eventReceiverWithArguments(String s) {
         System.out.println(getClass().getName()+".eventReceiverWithArguments() " + s);
         senderArgument = s;
     }
 
-    @Observer("eventSender")
+    @Observer(Events.EVENT_SENDER)
     private void eventReceiverWithoutArguments() {
         System.out.println(getClass().getName()+".eventReceiverWithoutArguments() ");
         receiveNamedEventWithoutArgument = true;

@@ -24,18 +24,18 @@ public class Bean1 implements IBean {
         return s;
     }
 
-    @Observable("event1")
+    @Observable(Events.EVENT1)
     public String eventSender(String s){
        return  eventSenderImpl(s);
     }
 
-    @Observer("event1")
+    @Observer(Events.EVENT1)
     private void eventReceiverWithArguments(String s) {
         System.out.println(getClass().getName()+".eventReceiverWithArguments() " + s);
         senderArgument = s;
     }
 
-    @Observer("event1")
+    @Observer(Events.EVENT1)
     private void eventReceiverWithoutArguments() {
         System.out.println(getClass().getName()+".eventReceiverWithoutArguments() ");
         receiveNamedEventWithoutArgument = true;

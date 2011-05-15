@@ -35,6 +35,7 @@ public class AppTest
     {
        //given
         String testArgument = "testArgument";
+
         //when
         bean.eventSender(testArgument);
 
