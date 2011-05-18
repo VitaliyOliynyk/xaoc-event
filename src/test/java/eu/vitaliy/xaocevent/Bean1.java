@@ -2,6 +2,8 @@ package eu.vitaliy.xaocevent;
 
 import eu.vitaliy.xaocevent.annotation.Observable;
 import eu.vitaliy.xaocevent.annotation.Observer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +14,9 @@ public class Bean1 implements IBean {
 
     private String senderArgument = null;
     private boolean receiveNamedEventWithoutArgument = false;
+    @Qualifier("eu.vitaliy.xaocevent.EventQueue")
+    @Autowired
+    IEventQueue eventQueue;
 
     public Bean1() {
     }
@@ -19,7 +24,7 @@ public class Bean1 implements IBean {
     
     
     private String eventSenderImpl(String s) {
-        System.out.println(getClass().getName()+".eventSender()");
+        System.out.println(getClass().getName()+".eventSender() " + eventQueue.getClass());
         return s;
     }
 

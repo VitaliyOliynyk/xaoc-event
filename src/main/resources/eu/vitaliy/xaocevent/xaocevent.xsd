@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsd:schema xmlns="http://vitaliy.eu/schema/xaocevent"
-  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-  xmlns:beans="http://www.springframework.org/schema/beans"
-  targetNamespace="http://vitaliy.eu/schema/xaocevent"
-  elementFormDefault="qualified"
-  attributeFormDefault="unqualified">
-  <xsd:import namespace="http://www.springframework.org/schema/beans" />
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:beans="http://www.springframework.org/schema/beans"
+            targetNamespace="http://vitaliy.eu/schema/xaocevent"
+            elementFormDefault="qualified"
+            attributeFormDefault="unqualified">
+    <xsd:import namespace="http://www.springframework.org/schema/beans"/>
 
 
-  <xsd:element name="init" type="xsd:string"/>
-  
+    <xsd:element name="init"/>
+
+
 
 </xsd:schema>

@@ -30,6 +30,9 @@ public class ObserverAspect {
 
     private IEventQueue eventQueue;
 
+    public ObserverAspect() {
+    }
+
     @Pointcut("execution(* *.*(..)) && target(target)")
     public void allObserverMethods(Object target){}
 
