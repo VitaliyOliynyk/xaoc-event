@@ -97,13 +97,6 @@
             <artifactId>spring-context</artifactId>
             <version>${mvn.spring.version}</version>
         </dependency>
-
-
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>jsr250-api</artifactId>
-            <version>1.0</version>
-        </dependency>
         <dependency>
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
