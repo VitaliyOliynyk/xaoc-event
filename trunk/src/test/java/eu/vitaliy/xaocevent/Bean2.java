@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
  *
  * @author Vitaliy Oliynyk
  */
-@Component("bean2")
 public class Bean2 implements IBean {
 
     private String senderArgument = null;

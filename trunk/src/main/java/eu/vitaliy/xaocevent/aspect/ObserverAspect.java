@@ -24,14 +24,10 @@ import org.springframework.stereotype.Component;
  * @author Vitaliy Oliynyk
  */
 @Aspect
-@Component("eu.vitaliy.xaocevent.aspect.ObserverAspect")
 public class ObserverAspect {
 
     private Map<MetaDataContext, Boolean> isCheck = new HashMap<MetaDataContext, Boolean>();
 
-
-    @Autowired
-    @Qualifier("eu.vitaliy.xaocevent.EventQueue")
     private IEventQueue eventQueue;
 
     @Pointcut("execution(* *.*(..)) && target(target)")
@@ -64,4 +60,11 @@ public class ObserverAspect {
         }
     }
 
+    public IEventQueue getEventQueue() {
+        return eventQueue;
+    }
+
+    public void setEventQueue(IEventQueue eventQueue) {
+        this.eventQueue = eventQueue;
+    }
 }
