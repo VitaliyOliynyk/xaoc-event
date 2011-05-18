@@ -8,7 +8,7 @@
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 ">
-    <context:annotation-config/>
-    <context:component-scan base-package="eu.vitaliy*"/>
-    <aop:aspectj-autoproxy/>
+    <import resource="classpath:/xaoc-event-context.xml"/>
+    <bean id="bean1" class="eu.vitaliy.xaocevent.Bean1"/>
+    <bean id="bean2" class="eu.vitaliy.xaocevent.Bean2"/>
 </beans>

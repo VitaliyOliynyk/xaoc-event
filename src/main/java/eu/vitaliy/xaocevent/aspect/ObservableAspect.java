@@ -24,11 +24,8 @@ import org.springframework.stereotype.Component;
  * @author Witalij
  */
 @Aspect
-@Component("eu.vitaliy.xaocevent.aspect.ObservableAspect")
 public class ObservableAspect {
 
-    @Autowired
-    @Qualifier("eu.vitaliy.xaocevent.EventQueue")
     private IEventQueue eventQueue;
 
     @Pointcut("execution(@eu.vitaliy.xaocevent.annotation.Observable * *.*(..)) ")
@@ -60,4 +57,7 @@ public class ObservableAspect {
         return result;
     }
 
+    public void setEventQueue(IEventQueue eventQueue) {
+        this.eventQueue = eventQueue;
+    }
 }

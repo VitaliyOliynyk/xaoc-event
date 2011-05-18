@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
  *
  * @author Vitaliy Oliynyk
  */
-@Component("eu.vitaliy.xaocevent.EventQueue")
 public class EventQueue implements IEventQueue {
     Map<Object, List<ObserverContext>> observerMap
             = new HashMap<Object, List<ObserverContext>>();
