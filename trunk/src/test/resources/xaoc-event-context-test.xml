@@ -10,7 +10,10 @@
           http://vitaliy.eu/schema/xaocevent http://vitaliy.eu/schema/xaocevent/xaocevent.xsd
 ">
     <xaocevent:init/>
-    <!--<aop:aspectj-autoproxy/>-->
+    <!--
+    <aop:aspectj-autoproxy/>
+    <context:component-scan base-package="eu.vitaliy*"/>
+    -->
     <bean id="bean1" class="eu.vitaliy.xaocevent.Bean1"/>
     <bean id="bean2" class="eu.vitaliy.xaocevent.Bean2"/>
 </beans>
