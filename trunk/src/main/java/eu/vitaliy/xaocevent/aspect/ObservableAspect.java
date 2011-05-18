@@ -28,6 +28,9 @@ public class ObservableAspect {
 
     private IEventQueue eventQueue;
 
+    public ObservableAspect() {
+    }
+
     @Pointcut("execution(@eu.vitaliy.xaocevent.annotation.Observable * *.*(..)) ")
     public void observablePointcut(){}
 

@@ -3,12 +3,14 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-
+       xmlns:xaocevent="http://vitaliy.eu/schema/xaocevent"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
           http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+          http://vitaliy.eu/schema/xaocevent http://vitaliy.eu/schema/xaocevent/xaocevent.xsd
 ">
-    <import resource="classpath:/xaoc-event-context.xml"/>
+    <xaocevent:init/>
+    <!--<aop:aspectj-autoproxy/>-->
     <bean id="bean1" class="eu.vitaliy.xaocevent.Bean1"/>
     <bean id="bean2" class="eu.vitaliy.xaocevent.Bean2"/>
 </beans>
