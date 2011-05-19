@@ -3,12 +3,11 @@ package eu.vitaliy.xaocevent;
 import eu.vitaliy.xaocevent.aspect.ObservableAspect;
 import eu.vitaliy.xaocevent.aspect.ObserverAspect;
 import org.springframework.aop.aspectj.annotation.AnnotationAwareAspectJAutoProxyCreator;
+import org.springframework.aop.target.ThreadLocalTargetSource;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.BeanDefinitionStoreException;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.config.RuntimeBeanReference;
-import org.springframework.beans.factory.parsing.BeanComponentDefinition;
-import org.springframework.beans.factory.parsing.CompositeComponentDefinition;
 import org.springframework.beans.factory.support.*;
 import org.springframework.beans.factory.xml.AbstractSingleBeanDefinitionParser;
 import org.springframework.beans.factory.xml.ParserContext;
@@ -26,7 +25,8 @@ public class XaocEventBeanDefinitionParser extends AbstractSingleBeanDefinitionP
             EVENT_QUEUE_CLASS_NAME = "eu.vitaliy.xaocevent.EventQueue",
             OBSERVABLE_ASPECT_CLASS_NAME = "eu.vitaliy.xaocevent.aspect.ObservableAspect",
             OBSERVER_ASPECT_CLASS_NAME = "eu.vitaliy.xaocevent.aspect.ObserverAspect",
-            EVENT_QUEUE_PROPERTY = "eventQueue";
+            EVENT_QUEUE_PROPERTY = "eventQueue",
+            BEAN_NAME = "xaoc-event-init";
 
 
     @Override
@@ -40,11 +40,13 @@ public class XaocEventBeanDefinitionParser extends AbstractSingleBeanDefinitionP
 
 
         BeanDefinitionRegistry bdf = parserContext.getRegistry();
+        MutablePropertyValues mpv = new MutablePropertyValues();
         RootBeanDefinition beanDef = new RootBeanDefinition(EventQueue.class);
+        beanDef.setScope(BeanDefinition.SCOPE_SINGLETON);
         bdf.registerBeanDefinition(EVENT_QUEUE_CLASS_NAME, beanDef);
 
-        MutablePropertyValues mpv = new MutablePropertyValues();
-        mpv.addPropertyValue("eventQueue", new RuntimeBeanReference(EVENT_QUEUE_CLASS_NAME));
+        mpv = new MutablePropertyValues();
+        mpv.addPropertyValue(EVENT_QUEUE_PROPERTY, new RuntimeBeanReference(EVENT_QUEUE_CLASS_NAME));
         beanDef = new RootBeanDefinition(ObservableAspect.class);
         beanDef.setPropertyValues(mpv);
 
@@ -56,12 +58,11 @@ public class XaocEventBeanDefinitionParser extends AbstractSingleBeanDefinitionP
         beanDef.setPropertyValues(mpv);
         bdf.registerBeanDefinition(OBSERVER_ASPECT_CLASS_NAME, beanDef);
 
-
     }
 
     @Override
     protected String resolveId(Element element, AbstractBeanDefinition definition, ParserContext parserContext) throws BeanDefinitionStoreException {
-        return "xaoc-event-init";
+        return BEAN_NAME;
     }
 
     @Override

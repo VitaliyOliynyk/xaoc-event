@@ -8,6 +8,8 @@ package eu.vitaliy.xaocevent.aspect;
 import eu.vitaliy.xaocevent.IEventQueue;
 import eu.vitaliy.xaocevent.ObserverContext;
 import eu.vitaliy.xaocevent.annotation.Observable;
+
+import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.List;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -24,7 +26,7 @@ import org.springframework.stereotype.Component;
  * @author Witalij
  */
 @Aspect
-public class ObservableAspect {
+public class ObservableAspect implements Serializable {
 
     private IEventQueue eventQueue;
 
@@ -49,14 +51,8 @@ public class ObservableAspect {
         {
             eventKey = method.getName();
         }
-        List<ObserverContext> observers = eventQueue.get(eventKey);
-        if(observers != null)
-        {
-            for(ObserverContext observer : observers )
-            {
-                observer.invoke(result);
-            }
-        }
+
+        eventQueue.raiseEvent(eventKey, result);
         return result;
     }
 

@@ -2,7 +2,6 @@ package eu.vitaliy.xaocevent;
 
 import eu.vitaliy.xaocevent.annotation.Observable;
 import eu.vitaliy.xaocevent.annotation.Observer;
-import org.springframework.stereotype.Component;
 
 /**
  *
@@ -28,13 +27,13 @@ public class Bean2 implements IBean {
        return  eventSenderImpl(s);
     }
 
-    @Observer(Events.EVENT_SENDER)
+    @Observer(EventsList.EVENT_SENDER)
     private void eventReceiverWithArguments(String s) {
         System.out.println(getClass().getName()+".eventReceiverWithArguments() " + s);
         senderArgument = s;
     }
 
-    @Observer(Events.EVENT_SENDER)
+    @Observer(EventsList.EVENT_SENDER)
     private void eventReceiverWithoutArguments() {
         System.out.println(getClass().getName()+".eventReceiverWithoutArguments() ");
         receiveNamedEventWithoutArgument = true;
