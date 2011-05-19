@@ -1,10 +1,12 @@
 package eu.vitaliy.xaocevent;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Vitaliy Oliynyk
  */
-public class MetaDataContext {
+public class MetaDataContext implements Serializable {
     private Object obj;
     private Class clazz;
 

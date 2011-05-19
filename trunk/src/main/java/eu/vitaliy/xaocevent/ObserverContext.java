@@ -1,5 +1,6 @@
 package eu.vitaliy.xaocevent;
 
+import java.io.Serializable;
 import java.lang.reflect.Method;
 
 
@@ -7,7 +8,7 @@ import java.lang.reflect.Method;
  *
  * @author Vitaliy Oliynyk
  */
-public class ObserverContext {
+public class ObserverContext implements Serializable {
     private Method method;
     private Object target;
 
