@@ -17,10 +17,6 @@ public class ObserverContext implements Serializable {
         this.target = target;
     }
 
-    public ObserverContext() {
-    }
-
-
     public void invoke(Object observableResult) throws Throwable
     {
         method.setAccessible(true);
@@ -30,22 +26,6 @@ public class ObserverContext implements Serializable {
         }else{
             method.invoke(target);
         }
-    }
-
-    public Method getMethod() {
-        return method;
-    }
-
-    public void setMethod(Method method) {
-        this.method = method;
-    }
-
-    public Object getTarget() {
-        return target;
-    }
-
-    public void setTarget(Object target) {
-        this.target = target;
     }
 
 }
