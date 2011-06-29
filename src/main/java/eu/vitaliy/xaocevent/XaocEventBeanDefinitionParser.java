@@ -28,13 +28,6 @@ public class XaocEventBeanDefinitionParser extends AbstractSingleBeanDefinitionP
             EVENT_QUEUE_PROPERTY = "eventQueue",
             BEAN_NAME = "xaoc-event-init";
 
-
-    @Override
-    protected void doParse(Element element, BeanDefinitionBuilder builder) {
-        super.doParse(element, builder);       //To change body of overridden methods use File | Settings | File Templates.
-
-    }
-
     @Override
     protected void doParse(Element element, ParserContext parserContext, BeanDefinitionBuilder builder) {
 

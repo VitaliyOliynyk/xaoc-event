@@ -67,10 +67,6 @@ public class ObserverAspect implements Serializable {
         }
     }
 
-    public IEventQueue getEventQueue() {
-        return eventQueue;
-    }
-
     public void setEventQueue(IEventQueue eventQueue) {
         this.eventQueue = eventQueue;
     }
