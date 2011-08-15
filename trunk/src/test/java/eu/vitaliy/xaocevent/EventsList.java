@@ -10,5 +10,6 @@ package eu.vitaliy.xaocevent;
 public interface EventsList {
     String EVENT1="event1",
            EVENT_SENDER="eventSender",
-           EVENT_THREAD_SAFE = "eventYhreadSafe";
+           EVENT_THREAD_SAFE = "eventYhreadSafe",
+           SPRING_EVENT_ID1 = "SPRING_EVENT_ID1";
 }

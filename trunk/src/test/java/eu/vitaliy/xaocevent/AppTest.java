@@ -40,8 +40,8 @@ public class AppTest
         bean.eventSender(testArgument);
 
         //then
-        assertThat(bean1.isReceiveNamedEventWithoutArgument()).isTrue();
-        assertThat(bean1.getSenderArgument()).isEqualTo(testArgument);
+        assertThat(bean.isReceiveNamedEventWithoutArgument()).isTrue();
+        assertThat(bean.getSenderArgument()).isEqualTo(testArgument);
     }
 
 

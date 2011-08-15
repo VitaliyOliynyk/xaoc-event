@@ -4,13 +4,16 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Component;
 
 /**
  *
  * @author Vitaliy Oliynyk
  */
-public class EventQueue implements IEventQueue {
+public class EventQueue implements IEventQueue, ApplicationEventPublisherAware {
     ThreadLocal<HashMap<Object, List<ObserverContext>>> observerMapThreadLocal
                 = new ThreadLocal<HashMap<Object, List<ObserverContext>>>(){
         @Override
@@ -19,6 +22,7 @@ public class EventQueue implements IEventQueue {
         }
     };
 
+    private ApplicationEventPublisher publisher;
 
     public EventQueue() {
     }
@@ -49,7 +53,7 @@ public class EventQueue implements IEventQueue {
         return getObserverMap().get(id);
     }
 
-    public void raiseEvent(String eventID, Object eventArg) throws Throwable {
+    public void raiseEvent(String eventID, Object eventArg, Object source, boolean fromAnnotatedObservable ) throws Throwable {
         List<ObserverContext> observers = get(eventID);
         if(observers != null)
         {
@@ -58,7 +62,25 @@ public class EventQueue implements IEventQueue {
                 observer.invoke(eventArg);
             }
         }
+
+        if(fromAnnotatedObservable)
+        {
+            sendToSpringEventQueue(eventID, eventArg, source);
+        }
+
+
+    }
+
+    private void sendToSpringEventQueue(String eventID, Object eventArg, Object source) {
+        XaocEvent xaocEvent = new XaocEvent(source, eventArg, eventID );
+        XaocEvent.Metadata metadata = new XaocEvent.Metadata();
+        metadata.setFromAnnotatedObservable(true);
+        xaocEvent.setMetadata(metadata);
+        publisher.publishEvent(xaocEvent);
     }
 
 
+    public void setApplicationEventPublisher(ApplicationEventPublisher applicationEventPublisher) {
+        this.publisher = applicationEventPublisher;
+    }
 }
