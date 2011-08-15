@@ -26,6 +26,7 @@ public class XaocEventBeanDefinitionParser extends AbstractSingleBeanDefinitionP
             OBSERVABLE_ASPECT_CLASS_NAME = "eu.vitaliy.xaocevent.aspect.ObservableAspect",
             OBSERVER_ASPECT_CLASS_NAME = "eu.vitaliy.xaocevent.aspect.ObserverAspect",
             EVENT_QUEUE_PROPERTY = "eventQueue",
+            SPRING_NOTIFIER = "eu.vitaliy.xaocevent.XaocEventSpringNotifier",
             BEAN_NAME = "xaoc-event-init";
 
     @Override
@@ -33,24 +34,31 @@ public class XaocEventBeanDefinitionParser extends AbstractSingleBeanDefinitionP
 
 
         BeanDefinitionRegistry bdf = parserContext.getRegistry();
-        MutablePropertyValues mpv = new MutablePropertyValues();
+
         RootBeanDefinition beanDef = new RootBeanDefinition(EventQueue.class);
         beanDef.setScope(BeanDefinition.SCOPE_SINGLETON);
         bdf.registerBeanDefinition(EVENT_QUEUE_CLASS_NAME, beanDef);
 
-        mpv = new MutablePropertyValues();
-        mpv.addPropertyValue(EVENT_QUEUE_PROPERTY, new RuntimeBeanReference(EVENT_QUEUE_CLASS_NAME));
         beanDef = new RootBeanDefinition(ObservableAspect.class);
-        beanDef.setPropertyValues(mpv);
+        beanDef.setPropertyValues(getMutablePropertyWithEventQueues());
 
         bdf.registerBeanDefinition(OBSERVABLE_ASPECT_CLASS_NAME, beanDef);
 
-        mpv = new MutablePropertyValues();
-        mpv.addPropertyValue(EVENT_QUEUE_PROPERTY, new RuntimeBeanReference(EVENT_QUEUE_CLASS_NAME));
         beanDef = new RootBeanDefinition(ObserverAspect.class);
-        beanDef.setPropertyValues(mpv);
+        beanDef.setPropertyValues(getMutablePropertyWithEventQueues());
         bdf.registerBeanDefinition(OBSERVER_ASPECT_CLASS_NAME, beanDef);
 
+        beanDef = new RootBeanDefinition(XaocEventSpringNotifier.class);
+        beanDef.setPropertyValues(getMutablePropertyWithEventQueues());
+        bdf.registerBeanDefinition(SPRING_NOTIFIER, beanDef);
+    }
+
+
+    private MutablePropertyValues getMutablePropertyWithEventQueues() {
+        MutablePropertyValues mpv;
+        mpv = new MutablePropertyValues();
+        mpv.addPropertyValue(EVENT_QUEUE_PROPERTY, new RuntimeBeanReference(EVENT_QUEUE_CLASS_NAME));
+        return mpv;
     }
 
     @Override

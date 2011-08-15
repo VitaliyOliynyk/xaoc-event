@@ -23,7 +23,7 @@ import org.springframework.stereotype.Component;
 
 /**
  *
- * @author Witalij
+ * @author Vitaliy Oliynyk
  */
 @Aspect
 public class ObservableAspect implements Serializable {
@@ -52,7 +52,7 @@ public class ObservableAspect implements Serializable {
             eventKey = method.getName();
         }
 
-        eventQueue.raiseEvent(eventKey, result);
+        eventQueue.raiseEvent(eventKey, result, pjp.getTarget(), true);
         return result;
     }
 

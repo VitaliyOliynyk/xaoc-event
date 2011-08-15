@@ -13,6 +13,6 @@ public interface IEventQueue extends Serializable {
 
     List<ObserverContext> get(Object id);
 
-    void raiseEvent(String eventID, Object eventArg) throws Throwable;
+    void raiseEvent(String eventID, Object eventArg, Object source, boolean fromAnnotatedObservable) throws Throwable;
 
 }
