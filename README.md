@@ -10,20 +10,16 @@ Quick start
 ===========
 
 -   Step 1 add maven dependency:
-
-<!-- -->
-
+```xml
     <dependency>   
         <artifactId>xaoc-event</artifactId>
         <groupId>eu.vitaliy</groupId>
         <artifactId>xaoc-event</artifactId>
         <version>1.0.1</version>
     </dependency>
-
+```
 -   Step 2 add <xe:init/>(with namespace declaration) to spring configuration file
-
-<!-- -->
-
+```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <beans xmlns="http://www.springframework.org/schema/beans"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -35,11 +31,9 @@ Quick start
         <xe:init/>
         ...
     </beans>
-
+```
 -   Use it like this:
-
-<!-- -->
-
+```java
     public interface IBean1 {
         String eventSender(String s);
     }
@@ -70,11 +64,10 @@ Quick start
         }
 
     }
-
+```
 -   If you are not using Maven (Please refer to the Project Dependencies for exact list and version numbers)
 
-<!-- -->
-
+```bash
     +- org.springframework:spring-beans:jar:3.0.5.RELEASE
     |  \- org.springframework:spring-core:jar:3.0.5.RELEASE
     |     \- commons-logging:commons-logging:jar:1.1.1
@@ -85,3 +78,4 @@ Quick start
     |  \- org.springframework:spring-asm:jar:3.0.5.RELEASE
     +- org.aspectj:aspectjweaver:jar:1.6.10
     +- org.aspectj:aspectjrt:jar:1.6.10
+```
