@@ -1,0 +1,17 @@
+.classpath
+.project
+.settings/
+*.ids
+*.iml
+*.ipr
+*.iws
+.idea
+*.orig
+target/
+build/
+nbproject/
+/.externalToolBuilders
+/nbproject
+/target
+/work
+bin
